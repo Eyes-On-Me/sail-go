@@ -37,11 +37,11 @@ type (
 )
 
 const (
-	_VERSION   = "0.4 / 2015.12.1"
+	_VERSION   = "0.4 - 2015.12.1"
 	_ENV       = "SERVICE"
 	_HOST      = "0.0.0.0"
 	_PORT      = 8080
-	_E404      = "404 - Page Not Found"
+	_E404      = "404 Page Not Found"
 	_CHARSET   = "UTF-8"
 	_PATH_ROOT = "/"
 	_MODE_DEV  = iota
