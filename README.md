@@ -1,7 +1,9 @@
 ## Sail Go - Go语言通用基础库
+
 ### 基本路径说明
 * com Component 组件
 * mod Module 模块
+
 ### 已有功能
 1. 编码转换 com/data/convert
 2. 加密解密 com/data/crypt
@@ -20,7 +22,6 @@
 15. Web服务端 mod/net/web (开箱即用 100行代码即可包含日志记录, 国际化, 安全加密, 模板功能, 静态文件绑定与路径绑定, 开发模式与发布模式)
 
 ### Web示例
-
 ```
 package main
 
