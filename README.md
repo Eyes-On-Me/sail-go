@@ -19,7 +19,12 @@
 12. 日志Log mod/data/log
 13. 网络数据抓取 mod/net/fetcher
 14. 网络服务框架 mod/net/service (无反射, 性能好, 功能全, 模块化)
-15. Web服务端 mod/net/web (开箱即用 100行代码即可包含日志记录, 国际化, 安全加密, 模板功能, 静态文件绑定与路径绑定, 开发模式与发布模式)
+15. 网络服务框架的可选模块 mod/net/service/mod
+16. Web服务端 mod/net/web (开箱即用 100行代码即可包含日志记录, 国际化, 安全加密, 模板功能, 静态文件绑定与路径绑定, 开发模式与发布模式)
+
+### Net Service & Net Web 介绍
+1. Net Service借鉴了Gin与Marcaron, 在不使用反射的情况下增加了复杂URL路由, 目标是为了实现一个在效率, 性能, 功能三者之间平衡好用的框架
+2. Net Web是基于Net Service进行的在封装, 模块使用与Net Service相同. 基本理念是让所有事情在配置中解决, 在满足大部分Web项目的同时, 即可扩展又可让使用者专注业务逻辑本身
 
 ### Web示例
 ```
@@ -42,14 +47,14 @@ var (
 		},
 		Base: &sWeb.Base{
 			Port:            8888,                               // 端口
-			SecretKey:       `C\WVM(A&yX/dScm503YdD5.,\>(~c>X?`, // AES统一安全码 (Cookie, CSRF)
+			SecretKey:       `C\WVM(A&yX/dScm503YdD5.,\>(~c>X?`, // AES统一秘钥 (Cookie, CSRF)
 			DefaultLang:     "en-US",                            // 默认语言
 			I18nLangs:       []string{"en-US", "zh-CN"},         // 语言ID
 			I18nNames:       []string{"Engligh", "中文"},          // 语言列表
 			PathRootDev:     "../",                              // 开发模式的相对路径
 			PathRootRelease: "./",                               // 发布模式的相对路径
 			PathLangs:       "langs",                            // 语言文件路径
-			PathTemplate:    "html",                             // 模版文件路径
+			PathTemplate:    "html",                             // 模板文件路径
 		},
 		Pro: &sWeb.Pro{
 			PathStatics: [][]string{ // URL绑定静态目录
@@ -64,7 +69,7 @@ var (
 )
 
 func getIndex(con *service.Context) {
-	web.Tpl("index", 100, false, con) // 1.模版文件 2.模版标记(用于主题分类, 例100~199是前台, 200~299是后台, 300~399是专题页面...) 3.是否为PJAX(让网站体验更好) 4.上下文变量
+	web.Tpl("index", 100, false, con) // 1.模板文件 2.模板标记(用于主题分类, 例100~199是前台, 200~299是后台, 300~399是专题页面...) 3.是否为PJAX(让网站体验更好) 4.上下文变量
 }
 
 func get404(con *service.Context) {
