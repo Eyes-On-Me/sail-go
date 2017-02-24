@@ -1,4 +1,4 @@
-## Sail Go - Go语言通用基础库
+## Sail Go - Go语言常用基础库
 
 ### 基本路径说明
 * com Component 组件
